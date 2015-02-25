@@ -34,7 +34,7 @@ class Archiver():
         self.cleanup()
 
     def create_tmpdir(self):
-        self.tmpdir = self.cwd + "./packmule_tmp"
+        self.tmpdir = self.cwd + "/packmule_tmp"
         shutil.copytree(self.cwd, self.tmpdir)
 
     def run_commands(self):

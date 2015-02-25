@@ -48,17 +48,17 @@ class Archiver():
     def create_archives(self):
         for format in self.options['formats']:
             if format == "zip":
-                shutil.make_archive(self.cwd + self.options['package-as'],
-                                    'zip', self.tmpdir)
+                self.create_archive('zip')
             elif format == "tar":
-                shutil.make_archive(self.cwd + self.options['package-as'],
-                                    'tar', self.tmpdir)
+                self.create_archive('tar')
             elif format == "tar.gz":
-                shutil.make_archive(self.cwd + self.options['package-as'],
-                                    'gztar', self.tmpdir)
+                self.create_archive('gztar')
             elif format == "tar.bz2":
-                shutil.make_archive(self.cwd + self.options['package-as'],
-                                    'bztar', self.tmpdir)
+                self.create_archive('bztar')
+
+    def create_archive(self, format):
+        path = self.cwd + "/" + self.options['package-as']
+        shutil.make_archive(path, format, self.tmpdir)
 
     def cleanup(self):
         shutil.rmtree(self.tmpdir)
